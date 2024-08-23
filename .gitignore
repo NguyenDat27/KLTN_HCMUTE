@@ -1,0 +1,8 @@
+.DS_Store
+.vscode
+.logs
+.idea
+
+# docker-compose.yml
+# Dockerfile
+# .dockerignore

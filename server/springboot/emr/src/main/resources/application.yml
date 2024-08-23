@@ -1,0 +1,55 @@
+client:
+  # THIS IS YOUR SERVER DOMAIN/IP, REPLACE IT WITH YOUR DOMAIN/IP
+  url: "http://localhost:5173"
+  # url: "http://kltn-spkt-benhvienx.me"
+
+server:
+  servlet:
+    context-path: /emr
+
+app:
+  jwt:
+    rsa:
+      private-key: classpath:certs/private.pem
+      public-key: classpath:certs/public.pem
+    expiresTime: 7
+  cookie:
+    expiresTime: 7
+  cloudinary:
+    cloudName: ${CLOUDINARY_CLOUD_NAME}
+    apiKey: ${CLOUDINARY_API_KEY}
+    apiSecret: ${CLOUDINARY_API_SECRET}
+
+spring:
+  application:
+    name: emr
+  output:
+    ansi:
+      enabled: DETECT
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: ${GOOGLE_CLIENT_ID}
+            clientSecret: ${GOOGLE_CLIENT_SECRET}
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - profile
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+  profiles:
+    active: prod

@@ -1,0 +1,10 @@
+server:
+  port: 8080
+logging:
+  level:
+    root: DEBUG
+    org.mongodb.driver.cluster: OFF
+spring:
+  data:
+    mongodb:
+      database: emrdev
